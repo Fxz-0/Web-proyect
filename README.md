@@ -75,7 +75,7 @@ exploren items con facilidad.
 - Clave API de Steam (gratuita)
 - Navegador moderno (Chrome, Firefox, Safari, Edge)
 
-## nstalación y Configuración
+## Instalación y Configuración
 
 ### 1. Descargar el Proyecto
 
