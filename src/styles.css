@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-padding-top: 5rem;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: #ffd100;
+  color: #1a042a;
+}
+
+body {
+  @apply bg-purple-100 font-sans text-gold-50 antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-display font-bold;
+}
+
+h1 {
+  text-shadow: 0 0 10px #000, 0 0 5px #000;
+}
+
+a {
+  @apply transition-colors duration-200;
+}
+
+.btn-bone {
+  @apply inline-block cursor-pointer rounded-lg bg-purple-70 px-6 py-2.5 text-center font-sans text-base font-semibold uppercase tracking-wide text-gold-100 transition-all duration-200;
+  box-shadow: 0 3px 0 #300059, 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.btn-bone:hover {
+  @apply -translate-y-0.5 bg-purple-60;
+  box-shadow: 0 5px 0 #300059, 0 8px 14px rgba(0, 0, 0, 0.45);
+}
+
+.btn-bone:active {
+  @apply translate-y-0.5;
+  box-shadow: 0 1px 0 #300059, 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.btn-ghost {
+  @apply inline-block cursor-pointer rounded-lg border-2 border-purple-50 px-6 py-2 font-sans text-base font-semibold uppercase tracking-wide text-gold-100 transition-all duration-200;
+}
+
+.btn-ghost:hover {
+  @apply border-purple-40 bg-purple-90;
+}
+
+.bone-input {
+  @apply w-full rounded-lg border-2 border-purple-50 bg-purple-10 px-4 py-2.5 font-sans text-base font-medium text-gold-700 outline-none transition-all duration-200;
+  font-family: inherit;
+}
+
+.bone-input::placeholder {
+  @apply text-purple-70 opacity-70;
+}
+
+.bone-input:hover {
+  @apply border-purple-60;
+}
+
+.bone-input:focus {
+  @apply border-purple-80;
+  box-shadow: 0 0 0 3px rgba(174, 0, 255, 0.25);
+}
+
+.panel-title {
+  @apply bg-purple-70 text-gold-100;
+  box-shadow: 0 0 10px #1a042a, inset 0 0 10px #300059;
+}
+
+.panel-body {
+  background: linear-gradient(to right, #2d2331, #2e2e2e);
+  @apply text-gold-50;
+}
+
+table {
+  @apply w-full border-collapse text-left;
+}
+
+th, td {
+  @apply border-2 border-purple-50 px-5 py-3;
+}
+
+th {
+  @apply font-normal text-gold-400;
+}
+
+td {
+  @apply text-gold-50;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
