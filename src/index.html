@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIG - Steam Inventory Gallery</title>
+  <meta name="description" content="Crea una galería de tu inventario Steam para mostrar y vender tus items.">
+
+  <!-- Tailwind CSS compilado -->
+  <link rel="stylesheet" href="../dist/styles.css">
+</head>
+
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <header class="sticky top-0 z-50 bg-purple-90 shadow-[0_0_10px_#1a042a]">
+    <nav class="mx-auto flex h-16 max-w-5xl items-center justify-between px-5">
+      <a href="#inicio" class="font-display text-2xl font-bold text-gold-400">SIG</a>
+
+      <!-- Menu Desktop -->
+      <ul class="hidden h-full items-stretch md:flex">
+        <li><a href="#caracteristicas" class="flex h-full items-center px-6 text-gold-100 transition hover:bg-purple-70">Características</a></li>
+        <li><a href="#como-funciona" class="flex h-full items-center px-6 text-gold-100 transition hover:bg-purple-70">Cómo funciona</a></li>
+        <li><a href="#nosotros" class="flex h-full items-center px-6 text-gold-100 transition hover:bg-purple-70">Nosotros</a></li>
+        <li><a href="#contacto" class="flex h-full items-center px-6 text-gold-100 transition hover:bg-purple-70">Contacto</a></li>
+      </ul>
+
+      <!-- Botón menú móvil -->
+      <button id="menu-btn" class="p-2 text-gold-100 md:hidden" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Menu Móvil -->
+    <div id="menu" class="hidden border-t border-purple-80 md:hidden">
+      <ul class="mx-auto flex max-w-5xl flex-col px-5 py-2 text-gold-100">
+        <li><a href="#caracteristicas" class="block py-3">Características</a></li>
+        <li><a href="#como-funciona" class="block py-3">Cómo funciona</a></li>
+        <li><a href="#nosotros" class="block py-3">Nosotros</a></li>
+        <li><a href="#contacto" class="block py-3">Contacto</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="inicio" class="px-5 py-24 text-center sm:py-32">
+      <h1 class="mx-auto max-w-3xl font-display text-4xl font-bold leading-tight text-gold-100 sm:text-6xl">
+        Tu tienda virtual de items Steam
+      </h1>
+      <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-gold-50/90 sm:text-xl">
+        Crea una galería de tu inventario, elige qué items mostrar y compártela con quien quiera comprarlos.
+      </p>
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <a href="#como-funciona" class="btn-bone">Explorar ahora</a>
+        <a href="#caracteristicas" class="btn-ghost">Ver demo</a>
+      </div>
+    </section>
+
+    <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+    <div class="mx-auto max-w-4xl space-y-20 px-5 pb-24">
+
+      <!-- ==================== CARACTERÍSTICAS ==================== -->
+      <section id="caracteristicas">
+        <h2 class="mb-6 font-display text-3xl font-bold text-gold-100">Características</h2>
+        <div class="overflow-x-auto">
+          <table>
+            <tbody>
+              <tr>
+                <th class="w-2/5">Búsqueda de usuarios</th>
+                <td>Explora los inventarios públicos de Steam.</td>
+              </tr>
+              <tr>
+                <th>Galería visual</th>
+                <td>Tus items en una galería limpia y responsiva.</td>
+              </tr>
+              <tr>
+                <th>Filtro por rareza</th>
+                <td>Común, raro, épico, legendario y más.</td>
+              </tr>
+              <tr>
+                <th>Perfil personalizado</th>
+                <td>Muestra solo los items que quieres vender.</td>
+              </tr>
+              <tr>
+                <th>Comparativa de precios</th>
+                <td>Compara con el mercado de Steam.</td>
+              </tr>
+              <tr>
+                <th>Adaptable</th>
+                <td>Funciona en escritorio, tablet y móvil.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==================== CÓMO FUNCIONA ==================== -->
+      <section id="como-funciona">
+        <h2 class="mb-6 font-display text-3xl font-bold text-gold-100">Cómo funciona</h2>
+        <div class="space-y-6">
+          <article>
+            <h3 class="panel-title px-4 py-2.5 text-xl text-gold-100">1. Busca un usuario</h3>
+            <p class="panel-body p-5 text-lg text-gold-50/90">Ingresa el SteamID o el nombre de usuario que quieres explorar.</p>
+          </article>
+          <article>
+            <h3 class="panel-title px-4 py-2.5 text-xl text-gold-100">2. Visualiza el inventario</h3>
+            <p class="panel-body p-5 text-lg text-gold-50/90">Revisa todos los items en una galería ordenada.</p>
+          </article>
+          <article>
+            <h3 class="panel-title px-4 py-2.5 text-xl text-gold-100">3. Filtra y contacta</h3>
+            <p class="panel-body p-5 text-lg text-gold-50/90">Filtra por rareza y escribe al vendedor para negociar.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ==================== MISIÓN Y VISIÓN ==================== -->
+      <section id="mision-vision" class="space-y-12">
+        <div>
+          <h2 class="mb-3 font-display text-3xl font-bold text-gold-100">Misión</h2>
+          <p class="max-w-2xl text-lg leading-relaxed text-gold-50/90">
+            Ofrecer una plataforma segura y fácil de usar para que traders, coleccionistas y streamers de Steam
+            creen galerías personalizadas de sus inventarios y compren, vendan o intercambien con orden y transparencia.
+          </p>
+        </div>
+        <div>
+          <h2 class="mb-3 font-display text-3xl font-bold text-gold-100">Visión</h2>
+          <p class="max-w-2xl text-lg leading-relaxed text-gold-50/90">
+            Ser la plataforma de referencia en Latinoamérica para items de Steam, ampliando el servicio a más juegos
+            y mercados, con una comunidad confiable donde prosperen traders profesionales y aficionados.
+          </p>
+        </div>
+      </section>
+
+      <!-- ==================== NOSOTROS ==================== -->
+      <section id="nosotros">
+        <h2 class="mb-3 font-display text-3xl font-bold text-gold-100">Nosotros</h2>
+        <div class="max-w-2xl space-y-4 text-lg leading-relaxed text-gold-50/90">
+          <p>
+            <span class="text-gold-400">SIG (Steam Inventory Gallery)</span> la crearon desarrolladores de la comunidad gaming de Steam para profesionalizar la venta de items en redes sociales.
+          </p>
+          <p>
+            Muchos traders promocionan sus inventarios en Facebook e Instagram sin una herramienta adecuada. SIG busca resolverlo con una solución simple y clara.
+          </p>
+        </div>
+        <ul class="mt-6 space-y-2 text-lg">
+          <li class="flex gap-3"><span class="text-gold-400">✓</span> Plataforma gratuita</li>
+          <li class="flex gap-3"><span class="text-gold-400">✓</span> Integración directa con la Steam API</li>
+          <li class="flex gap-3"><span class="text-gold-400">✓</span> Diseño moderno y responsivo</li>
+          <li class="flex gap-3"><span class="text-gold-400">✓</span> Soporte técnico</li>
+        </ul>
+      </section>
+      <section id="contacto">
+        <h2 class="mb-3 font-display text-3xl font-bold text-gold-100">Contacto</h2>
+        <div class="flex flex-wrap gap-x-8 gap-y-2 text-lg text-gold-100">
+          <a href="mailto:info@steaminventorygallery.com" class="text-gold-400 hover:underline">info@steaminventorygallery.com</a>
+          <span>Lima, Perú</span>
+          <span class="flex gap-4">
+            <a href="#" class="hover:text-gold-400">Instagram</a>
+            <a href="#" class="hover:text-gold-400">Facebook</a>
+            <a href="#" class="hover:text-gold-400">Discord</a>
+          </span>
+        </div>
+        <form id="contact-form" class="mt-8 max-w-xl space-y-4">
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="nombre" class="mb-1.5 block text-gold-100">Nombre</label>
+              <input id="nombre" type="text" class="bone-input" required>
+            </div>
+            <div>
+              <label for="email" class="mb-1.5 block text-gold-100">Email</label>
+              <input id="email" type="email" class="bone-input" required>
+            </div>
+          </div>
+          <div>
+            <label for="asunto" class="mb-1.5 block text-gold-100">Asunto</label>
+            <input id="asunto" type="text" class="bone-input" required>
+          </div>
+          <div>
+            <label for="mensaje" class="mb-1.5 block text-gold-100">Mensaje</label>
+            <textarea id="mensaje" rows="5" class="bone-input" required></textarea>
+          </div>
+          <button type="submit" class="btn-bone w-full sm:w-auto">Enviar mensaje</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-purple-90">
+    <div class="mx-auto flex max-w-5xl flex-col gap-4 px-5 py-8 text-gold-100 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-base">&copy; 2026 Steam Inventory Gallery</p>
+      <div class="flex gap-6 text-base">
+        <a href="#" class="hover:text-gold-400">Términos</a>
+        <a href="#" class="hover:text-gold-400">Privacidad</a>
+        <a href="#" class="hover:text-gold-400">Cookies</a>
+      </div>
+    </div>
+  </footer>
+  <script src="./js/main.js"></script>
+</body>
+</html>
