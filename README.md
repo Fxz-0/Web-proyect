@@ -1,85 +1,164 @@
-# Steam Inventory Gallery (SIG)
+# SIG API - Steam Inventory Gallery
 
-Una plataforma web moderna que permite a vendedores de items de Steam 
-crear galerías personalizadas de su inventario, y a compradores explorar 
-y descubrir items de forma visual y organizada.
+API REST desarrollada en PHP con arquitectura MVC y conexión a SQL Server.
 
-## Descripción del Proyecto
+## Requisitos
 
-**SIG** nace de la idea de proporcionar una tienda virtual profesional 
-para personas que venden items de Steam a través de redes sociales 
-(Facebook, Instagram). Permite crear dashboards personalizados donde 
-vendedores muestren sus inventarios de forma atractiva, y compradores 
-exploren items con facilidad.
+- PHP 8.1 o superior.
+- Composer.
+- SQL Server.
+- Extensiones PHP `pdo` y `pdo_sqlsrv`.
+- Postman o Thunder Client.
 
-## Características Principales
+## 1. Preparar la base de datos
 
-**Búsqueda de usuarios Steam**
-   - Por SteamID o nombre de usuario
-   - Validación de perfil público
+1. Abre SQL Server Management Studio.
+2. Ejecuta `database/SIG_DB_PA4.sql`.
+3. Verifica que se hayan creado las siete tablas de SIG.
 
-**Galería visual de inventarios**
-   - Visualización en grid responsivo
-   - Tarjetas de items con imagen, nombre y detalles
+El script crea las tablas que falten y agrega datos de prueba sin borrar la base de datos existente.
 
-**Filtrado inteligente**
-   - Por rareza del item
-   - Por disponibilidad (tradeable/comerciable)
+## 2. Configurar la conexión
 
-**Soporte inicial: Dota 2**
-   - Expandible a otros juegos con mercado Steam
+1. Copia `.env.example` y renombra la copia a `.env`.
+2. Completa los datos de tu SQL Server.
+3. No subas `.env` a GitHub. Está incluido en `.gitignore`.
 
-**Interfaz intuitiva**
-   - Página de inicio con instrucciones
-   - Diseño moderno y responsivo
+Ejemplo:
 
-## Público Objetivo
+```env
+DB_HOST=localhost
+DB_PORT=1433
+DB_NAME=SIG_DB
+DB_USER=sa
+DB_PASSWORD=tu_clave
+DB_ENCRYPT=no
+DB_TRUST_CERTIFICATE=yes
+```
 
-- **Jugadores de Steam** interesados en explorar inventarios
-- **Coleccionistas de items** virtuales
-- **Traders** que desean vender o comprar items
-- **Streamers** que promocionan su inventario
+La conexión utiliza PDO_SQLSRV. Debes tener instalado el controlador de Microsoft para PHP y habilitada la extensión `pdo_sqlsrv`.
 
-## Características Futuras (Opcionales)
+## 3. Instalar e iniciar
 
-**Sección de Usuario**
-   - Login con Steam OpenID
-   - Crear galería personalizada (seleccionar items específicos)
-   - No mostrar todo el inventario, solo lo que el usuario quiera
-
-**Análisis de Mercado**
-   - Historial de búsquedas recientes
-   - Comparativa de precios con mercado Steam
-   - Tendencias de items
-
-**Escalabilidad**
-   - Soporte para otros juegos (CS:GO, Team Fortress 2, etc.)
-   - Integración con múltiples mercados
-
-## Tecnologías
-
-| Tecnología | Propósito |
-|-----------|-----------|
-| **Node.js** | Entorno de ejecución |
-| **npm/pnpm** | Gestor de dependencias |
-| **HTML5** | Estructura semántica |
-| **Tailwind CSS** | Estilos y diseño responsivo |
-| **JavaScript Vanilla** | Interactividad del cliente |
-| **Steam Web API** | Datos de inventarios y usuarios |
-| **GitHub** | Control de versiones |
-
-## Requisitos Previos
-
-- Node.js v16 o superior
-- npm o pnpm instalado
-- Clave API de Steam (gratuita)
-- Navegador moderno (Chrome, Firefox, Safari, Edge)
-
-## Instalación y Configuración
-
-### 1. Descargar el Proyecto
+Desde la carpeta principal del proyecto:
 
 ```bash
-# Descomprime el proyect.zip
-unzip steam-inventory-gallery.zip
-cd steam-inventory-gallery
+composer install
+composer dump-autoload
+php -S localhost:8000 -t public
+```
+
+Abre `http://localhost:8000/api/usuarios` para comprobar el servicio.
+
+## 4. Módulos y endpoints
+
+Todos los módulos cuentan con GET, GET por ID, POST, PUT y DELETE:
+
+| Módulo | Ruta |
+|---|---|
+| Usuarios | `/api/usuarios` |
+| Jugadores Steam | `/api/jugadores-steam` |
+| Inventarios | `/api/inventarios` |
+| Rarezas | `/api/rarezas` |
+| Items | `/api/items` |
+| Galerías | `/api/galerias` |
+| Items de galerías | `/api/galeria-items` |
+
+Ejemplo para listar: `GET http://localhost:8000/api/items`
+
+## 5. Ejemplos JSON para Postman
+
+### Crear usuario
+POST `/api/usuarios`
+
+```json
+{
+  "nombre_usuario": "usuario_prueba",
+  "correo": "prueba@gmail.com",
+  "estado": "activo"
+}
+```
+
+### Crear jugador Steam
+POST `/api/jugadores-steam`
+
+```json
+{
+  "steam_id": "76561198000000999",
+  "nombre_steam": "Jugador de prueba",
+  "avatar_url": "https://example.com/avatar.png",
+  "perfil_url": "https://steamcommunity.com/profiles/76561198000000999"
+}
+```
+
+### Crear inventario
+POST `/api/inventarios`
+
+```json
+{
+  "jugador_id": 1,
+  "juego": "Dota 2",
+  "estado": "publico"
+}
+```
+
+### Crear rareza
+POST `/api/rarezas`
+
+```json
+{
+  "nombre_rareza": "Arcano",
+  "descripcion": "Artículo de rareza arcana"
+}
+```
+
+### Crear item
+POST `/api/items`
+
+```json
+{
+  "inventario_id": 1,
+  "rareza_id": 1,
+  "nombre_item": "Item de prueba",
+  "imagen_url": "https://example.com/item.png",
+  "es_tradeable": 1,
+  "es_marketable": 1
+}
+```
+
+### Crear galería
+POST `/api/galerias`
+
+```json
+{
+  "usuario_id": 1,
+  "nombre_galeria": "Mi nueva galeria",
+  "descripcion": "Galería de prueba",
+  "estado": 1
+}
+```
+
+### Agregar item a galería
+POST `/api/galeria-items`
+
+```json
+{
+  "galeria_id": 1,
+  "item_id": 1
+}
+```
+
+Para actualizar, envía un PUT con el ID y los campos que deseas modificar. Para eliminar, utiliza DELETE con el ID.
+
+## 6. Códigos HTTP
+
+- 200: consulta, actualización o eliminación correcta.
+- 201: registro creado.
+- 400: datos incorrectos o campos obligatorios faltantes.
+- 404: registro o endpoint no encontrado.
+- 409: registro duplicado o relacionado con otros datos.
+- 500: error interno o problema de conexión.
+
+## 7. Nota
+
+La API administra los datos que SIG almacena en SQL Server. La consulta real de inventarios mediante Steam Web API se integraría posteriormente desde la aplicación.
