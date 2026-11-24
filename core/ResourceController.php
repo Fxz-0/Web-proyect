@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Core;
 
-/** Controlador genérico: valida, responde con códigos HTTP coherentes y mensajes claros. */
 class ResourceController
 {
     public function __construct(protected BaseModel $model)
@@ -35,7 +34,7 @@ class ResourceController
         }
 
         $data = Validator::normalize($data, $this->model->types());
-        $data = array_filter($data, fn ($v) => $v !== null); // lo que no se envía usa el DEFAULT de la tabla
+        $data = array_filter($data, fn ($v) => $v !== null);
 
         $id = (int) $this->model->create($data);
         $row = $this->model->find($id) ?: [];
