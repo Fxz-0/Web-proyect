@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -12,4 +13,6 @@ class RarezaModel extends BaseModel
     protected array $fillable = ["nombre_rareza", "descripcion"];
     protected array $required = ["nombre_rareza"];
     protected array $types = ['nombre_rareza' => 'string', 'descripcion' => 'string'];
+
+    protected array $maxLengths = ['nombre_rareza' => 50, 'descripcion' => 200];
 }

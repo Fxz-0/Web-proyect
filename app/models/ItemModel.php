@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -12,4 +13,7 @@ class ItemModel extends BaseModel
     protected array $fillable = ["inventario_id", "rareza_id", "nombre_item", "imagen_url", "es_tradeable", "es_marketable"];
     protected array $required = ["inventario_id", "rareza_id", "nombre_item"];
     protected array $types = ['inventario_id' => 'int', 'rareza_id' => 'int', 'nombre_item' => 'string', 'imagen_url' => 'string', 'es_tradeable' => 'bool', 'es_marketable' => 'bool'];
+
+    protected array $maxLengths = ['nombre_item' => 150, 'imagen_url' => 500];
+    protected array $formats = ['imagen_url' => 'url'];
 }
